@@ -11,6 +11,7 @@ A simple pokedex mobile app created by using React Native (Expo) + Typescript
 ## How to run the project
 
 - Go to the project initial path and run `npm install -g exp` to install Expo globally
+- Run `npm i` to build all the node modules dependencies
 - Run `expo start` to start an Expo standalone run in your web browser
 - Then, using the Expo App in your mobile device, scan the QR Code that appears in your browser
 - Enjoy!
