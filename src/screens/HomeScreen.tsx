@@ -20,34 +20,36 @@ export const HomeScreen = () => {
         style={styles.pokeballBG}
       />
 
-      <FlatList
-        data={simplePokemonList}
-        keyExtractor={(pokemon) => pokemon.id}
-        renderItem={({ item }) => (
-          // <FadeInImage uri={item.picture} style={{ width: 100, height: 100 }} />
-          <PokemonCard pokemon={item} />
-        )}
-        ListHeaderComponent={() => (
-          <Text
-            style={{
-              ...styles.title,
-              ...styles.globalMargin,
-              top: top + 20,
-              marginBottom: top + 20,
-            }}
-          >
-            Pokedex
-          </Text>
-        )}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        //~ infinite scroll
-        onEndReached={loadPokemons}
-        onEndReachedThreshold={0.4}
-        ListFooterComponent={
-          <ActivityIndicator style={{ height: 100 }} size={20} color="grey" />
-        }
-      />
+      <View style={{ alignItems: "center" }}>
+        <FlatList
+          data={simplePokemonList}
+          keyExtractor={(pokemon) => pokemon.id}
+          renderItem={({ item }) => (
+            // <FadeInImage uri={item.picture} style={{ width: 100, height: 100 }} />
+            <PokemonCard pokemon={item} />
+          )}
+          ListHeaderComponent={() => (
+            <Text
+              style={{
+                ...styles.title,
+                ...styles.globalMargin,
+                top: top + 20,
+                marginBottom: top + 20,
+              }}
+            >
+              Pokedex
+            </Text>
+          )}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          //~ infinite scroll
+          onEndReached={loadPokemons}
+          onEndReachedThreshold={0.4}
+          ListFooterComponent={
+            <ActivityIndicator style={{ height: 100 }} size={20} color="grey" />
+          }
+        />
+      </View>
     </>
   );
 };
