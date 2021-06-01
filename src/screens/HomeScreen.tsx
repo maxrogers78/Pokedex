@@ -6,6 +6,7 @@ import { styles } from "../themes/appTheme";
 // hooks
 import { usePokemonPaginated } from "../hooks/usePokemonPaginated";
 import { FadeInImage } from "../components/FadeInImage";
+import { PokemonCard } from "../components/PokemonCard";
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -19,18 +20,26 @@ export const HomeScreen = () => {
         style={styles.pokeballBG}
       />
 
-      {/* 
-      <Text style={{ ...styles.title, ...styles.globalMargin, top: top + 20 }}>
-        Pokedex
-      </Text>
-      */}
-
       <FlatList
         data={simplePokemonList}
         keyExtractor={(pokemon) => pokemon.id}
         renderItem={({ item }) => (
-          <FadeInImage uri={item.picture} style={{ width: 100, height: 100 }} />
+          // <FadeInImage uri={item.picture} style={{ width: 100, height: 100 }} />
+          <PokemonCard pokemon={item} />
         )}
+        ListHeaderComponent={() => (
+          <Text
+            style={{
+              ...styles.title,
+              ...styles.globalMargin,
+              top: top + 20,
+              marginBottom: top + 20,
+            }}
+          >
+            Pokedex
+          </Text>
+        )}
+        numColumns={2}
         showsVerticalScrollIndicator={false}
         //~ infinite scroll
         onEndReached={loadPokemons}
