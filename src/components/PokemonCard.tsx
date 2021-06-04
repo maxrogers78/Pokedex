@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+import ImageColors from "react-native-image-colors";
 // interfaces
 import { SimplePokemon } from "../interfaces/pokemonInterfaces";
 // components
@@ -19,9 +20,29 @@ interface Props {
 }
 
 export const PokemonCard = ({ pokemon }: Props) => {
+  const [bgColor, setBgColor] = useState("#fdd131");
+
+  useEffect(() => {
+    /*
+    ImageColors.getColors("https://i.imgur.com/O3XSdU7.jpg", {
+      fallback: "grey",
+    }).then((colors) => {
+      if (colors.platform === "android") {
+        setBgColor(colors.dominant || "grey");
+      }
+    });
+    */
+  }, []);
+
   return (
     <TouchableOpacity activeOpacity={0.7}>
-      <View style={{ ...styles.cardContainer, width: windowWidth * 0.4 }}>
+      <View
+        style={{
+          ...styles.cardContainer,
+          width: windowWidth * 0.4,
+          backgroundColor: bgColor,
+        }}
+      >
         {/* Pokemon name & id */}
         <View>
           <Text style={styles.name}>
@@ -45,7 +66,6 @@ export const PokemonCard = ({ pokemon }: Props) => {
 const styles = StyleSheet.create({
   cardContainer: {
     marginHorizontal: 10,
-    backgroundColor: "red",
     height: 120,
     marginBottom: 25,
     borderRadius: 10,
